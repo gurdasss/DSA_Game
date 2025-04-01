@@ -5,7 +5,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.ui.Stack;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
 /**
@@ -22,14 +21,27 @@ public class Main implements ApplicationListener {
 
         screenViewport = new ScreenViewport();
         stage = new Stage(screenViewport);
-
-        Stack windowsStack = new Stack();
-        windowsStack.setFillParent(true);
+        Gdx.input.setInputProcessor(stage);
 
         Skin skin = new Skin(Gdx.files.internal("uiskin.json"));
 
+        MainMenuWindow mainMenuWindow = new MainMenuWindow(skin);
 
-        stage.addActor(windowsStack);
+        /*
+            No need to create a Stack container because
+            I can access all the Actors and Groups
+            from the Stage using stage.getActors()
+            in an Array.
+
+            I can also change the drawing order
+            of different actors just using their
+            z-index.
+         */
+
+        stage.addActor(mainMenuWindow);
+
+        System.out.println(stage.getActors().toString());
+
 
     }
 
