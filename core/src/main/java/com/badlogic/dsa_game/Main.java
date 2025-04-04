@@ -25,7 +25,8 @@ public class Main implements ApplicationListener {
 
         Skin skin = new Skin(Gdx.files.internal("uiskin.json"));
 
-        MainMenuWindow mainMenuWindow = new MainMenuWindow(skin);
+        MainMenu mainMenu = new MainMenu(stage, skin);
+
 
         /*
             No need to create a Stack container because
@@ -38,7 +39,8 @@ public class Main implements ApplicationListener {
             z-index.
          */
 
-        stage.addActor(mainMenuWindow);
+        stage.addActor(mainMenu);
+
 
         System.out.println(stage.getActors().toString());
 
