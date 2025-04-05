@@ -2,11 +2,12 @@ package com.badlogic.dsa_game;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
-abstract class WindowsConfiguration {
+abstract class WindowsConfiguration extends ScreenAdapter {
 
     /*
      * This is the base class for all the windows
@@ -27,7 +28,7 @@ abstract class WindowsConfiguration {
 
         this.stage = new Stage(this.screenViewport);
         Gdx.input.setInputProcessor(this.stage);
-        
+
         this.skin = new Skin(Gdx.files.internal("uiskin.json"));
 
         this.game = game;

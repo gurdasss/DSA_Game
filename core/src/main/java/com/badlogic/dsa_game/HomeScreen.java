@@ -2,10 +2,9 @@ package com.badlogic.dsa_game;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 
-public class HomeScreen extends WindowsConfiguration implements Screen {
+public class HomeScreen extends WindowsConfiguration {
 
     public HomeScreen(Game game) {
         super(game);
@@ -29,22 +28,7 @@ public class HomeScreen extends WindowsConfiguration implements Screen {
         screenViewport.update(width, height, true);
 
     }
-
-    @Override
-    public void pause() {
-
-    }
-
-    @Override
-    public void resume() {
-
-    }
-
-    @Override
-    public void hide() {
-
-    }
-
+    
     @Override
     public void dispose() {
 

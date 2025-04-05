@@ -2,7 +2,6 @@ package com.badlogic.dsa_game;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
@@ -12,11 +11,10 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 
-public class MainMenu extends WindowsConfiguration implements Screen {
+public class MainMenu extends WindowsConfiguration {
 
     public MainMenu(Game game) {
         super(game);
-
     }
 
     @Override
@@ -98,19 +96,7 @@ public class MainMenu extends WindowsConfiguration implements Screen {
         screenViewport.update(width, height, true);
 
     }
-
-    @Override
-    public void pause() {
-    }
-
-    @Override
-    public void resume() {
-    }
-
-    @Override
-    public void hide() {
-    }
-
+    
     @Override
     public void dispose() {
         System.out.println("All MAIN-MENU Resources are whoosh!");
