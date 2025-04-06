@@ -2,6 +2,7 @@ package com.badlogic.dsa_game;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.ProgressBar;
@@ -49,10 +50,12 @@ public class HomeScreen extends WindowsConfiguration {
         Table content = new Table();
         content.defaults().pad(10); // adds some spacing
 
-        for (int i = 0; i < 30; i++) {
-            content.row();
-            content.add(new Label("Item " + i, skin));
-        }
+        content.add(new ListSection(game, skin, Color.BLUE)).expandX().fill();
+        content.row();
+        content.add(new StackSection(game, skin, Color.BROWN)).expandX().fill();
+        content.row();
+        content.add(new QueueSection(game, skin, Color.CYAN)).expandX().fill();
+        content.row();
 
         content.pack(); // calculates size based on content
 
