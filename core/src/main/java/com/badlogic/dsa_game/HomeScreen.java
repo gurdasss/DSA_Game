@@ -1,9 +1,7 @@
 package com.badlogic.dsa_game;
 
 import com.badlogic.gdx.Game;
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.ProgressBar;
 import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
@@ -13,12 +11,12 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 public class HomeScreen extends WindowsConfiguration {
 
     public HomeScreen(Game game) {
-        super(game);
+        super(game, "HOME SCREEN");
     }
 
     @Override
     public void show() {
-        System.out.println("Welcome, HOME!!");
+        printWindowName();
 
         Table root = new Table();
         root.setFillParent(true);
@@ -76,29 +74,5 @@ public class HomeScreen extends WindowsConfiguration {
         stage.addActor(root);
     }
 
-    @Override
-    public void render(float delta) {
 
-        // Clear the screen and draw the stage
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
-        stage.act(delta);
-        stage.draw();
-
-    }
-
-    @Override
-    public void resize(int width, int height) {
-        screenViewport.update(width, height, true);
-
-    }
-
-    @Override
-    public void dispose() {
-
-        System.out.println("All HOME SCREEN Resources are whoosh!");
-        stage.dispose();
-        skin.dispose();
-
-    }
 }

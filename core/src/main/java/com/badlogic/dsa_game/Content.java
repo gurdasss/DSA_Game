@@ -17,10 +17,12 @@ public class Content extends Table {
         this.title.setFontScale(3);
         this.mainText = new Label("", skin);
 
-        this.setDebug(true, true);
+        this.setDebug(true);
 
-        this.defaults().expand();
-        this.defaults().fill();
+        this.defaults()
+            .expand()
+            .fill()
+            .padLeft(50);
 
 
         this.add(title);

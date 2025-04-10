@@ -15,6 +15,7 @@ public class QueueSection extends SectionConfiguration {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 System.out.println("Welcome, to QUEUE");
+                game.setScreen(new QueueIntroScreen(game));
             }
         });
     }

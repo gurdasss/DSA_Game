@@ -14,12 +14,12 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 public class MainMenu extends WindowsConfiguration {
 
     public MainMenu(Game game) {
-        super(game);
+        super(game, "MAIN MENU");
     }
 
     @Override
     public void show() {
-        System.out.println("IN MAIN MENU!!");
+        printWindowName();
 
         Table root = new Table();
         root.setFillParent(true);
@@ -91,17 +91,5 @@ public class MainMenu extends WindowsConfiguration {
 
     }
 
-    @Override
-    public void resize(int width, int height) {
-        screenViewport.update(width, height, true);
 
-    }
-    
-    @Override
-    public void dispose() {
-        System.out.println("All MAIN-MENU Resources are whoosh!");
-        stage.dispose();
-        skin.dispose();
-
-    }
 }

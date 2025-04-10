@@ -15,6 +15,7 @@ public class StackSection extends SectionConfiguration {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 System.out.println("Welcome, to STACK");
+                game.setScreen(new StackIntroScreen(game));
             }
         });
     }

@@ -2,14 +2,12 @@ package com.badlogic.dsa_game;
 
 import com.badlogic.gdx.Game;
 
-public class ListIntroScreen extends IntroScreen {
+public class QueueIntroScreen extends IntroScreen {
 
-    public ListIntroScreen(Game game) {
-
+    public QueueIntroScreen(Game game) {
         super(game);
 
-
-        content.setTitle("LIST");
+        content.setTitle("QUEUE");
         content.setMainText("jknsdjknnjksdjkn\n" +
             "sdhjbjhkjhsksjhknsfjk\n" +
             "sdfjknfsedhjkhjkshjkfsjknjksf\n" +
