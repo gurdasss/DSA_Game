@@ -6,8 +6,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 
 public class Content extends Table {
 
-    private Label title;
-    private Label mainText;
+    final private Label title;
+    final private Label mainText;
 
     public Content(Skin skin) {
 

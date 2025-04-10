@@ -15,6 +15,10 @@ public class ListSection extends SectionConfiguration {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 System.out.println("Welcome, to LIST");
+
+                // Get rid of previous screen (HomeScreen)
+                game.getScreen().dispose();
+                
                 game.setScreen(new ListIntroScreen(game));
             }
         });

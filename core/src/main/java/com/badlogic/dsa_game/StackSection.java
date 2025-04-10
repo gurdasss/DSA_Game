@@ -15,6 +15,10 @@ public class StackSection extends SectionConfiguration {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 System.out.println("Welcome, to STACK");
+
+                // Get rid of previous screen (HomeScreen)
+                game.getScreen().dispose();
+
                 game.setScreen(new StackIntroScreen(game));
             }
         });

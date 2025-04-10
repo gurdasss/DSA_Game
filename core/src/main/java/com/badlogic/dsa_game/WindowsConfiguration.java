@@ -57,8 +57,8 @@ abstract class WindowsConfiguration extends ScreenAdapter {
 
     @Override
     public void resize(int width, int height) {
-        System.out.println(windowName +
-            " is been resized!");
+//        System.out.println(windowName +
+//            " is been resized!");
         screenViewport.update(width, height, true);
     }
 
