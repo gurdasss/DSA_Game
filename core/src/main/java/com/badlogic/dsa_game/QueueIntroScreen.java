@@ -7,8 +7,8 @@ public class QueueIntroScreen extends IntroScreen {
     public QueueIntroScreen(Game game) {
         super(game);
 
-        content.setTitle("QUEUE");
-        content.setMainText("jknsdjknnjksdjkn\n" +
+        contentTable.setTitle("QUEUE");
+        contentTable.setMainText("jknsdjknnjksdjkn\n" +
             "sdhjbjhkjhsksjhknsfjk\n" +
             "sdfjknfsedhjkhjkshjkfsjknjksf\n" +
             "sdfejknejknjkfeshjbfehjb\n" +

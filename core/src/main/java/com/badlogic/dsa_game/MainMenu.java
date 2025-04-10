@@ -25,17 +25,15 @@ public class MainMenu extends WindowsConfiguration {
         root.setFillParent(true);
         root.setBackground(skin.newDrawable("white", Color.WHITE));
 
+        // overriding some default configs of root Table's Cell
+        root.defaults()
+            .width(500)
+            .height(100)
+            .space(25);
+
         // a dummy Game image
         Texture gameImageTexture = new Texture(Gdx.files.internal("test.png"));
         Image gameImage = new Image(gameImageTexture);
-
-
-        // setting the width and height of the image cell
-        root.add(gameImage)
-            .width(gameImage.getWidth() / 2.0f)
-            .height(gameImage.getHeight() / 2.0f);
-
-        root.row();
 
         TextButton playButton = new TextButton("PLAY", skin);
 
@@ -65,17 +63,16 @@ public class MainMenu extends WindowsConfiguration {
             }
         });
 
-        // setting up the following properties of the Cell:
-        root.add(playButton)
-            .width(500)
-            .height(100)
-            .space(25);
+
+        // setting the width and height of the image cell
+        root.add(gameImage)
+            .width(gameImage.getWidth() / 2.0f)
+            .height(gameImage.getHeight() / 2.0f);
 
         root.row();
-
-        root.add(quitButton)
-            .width(500)
-            .height(100);
+        root.add(playButton);
+        root.row();
+        root.add(quitButton);
 
         stage.addActor(root);
 

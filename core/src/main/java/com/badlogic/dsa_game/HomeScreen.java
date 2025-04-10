@@ -22,11 +22,17 @@ public class HomeScreen extends WindowsConfiguration {
         root.setFillParent(true);
         root.setDebug(true);
 
+        root.defaults()
+            .expandX()
+            .fill();
+
         // SETTING UP THE HEADER
 
         Table header = new Table();
         header.setDebug(true);
-        header.defaults().space(10);
+
+        header.defaults()
+            .space(10);
 
         Label testLabel = new Label("COMPLETED:", skin);
         ProgressBar progressBar = new ProgressBar(0, 100, 1, false, skin);
@@ -46,13 +52,18 @@ public class HomeScreen extends WindowsConfiguration {
         // SETTING UP THE SCROLL PANE
 
         Table content = new Table();
-        content.defaults().pad(10); // adds some spacing
 
-        content.add(new ListSection(game, skin, Color.BLUE)).expandX().fill();
+        content.defaults()
+            .pad(10)
+            .expandX()
+            .fill();
+
+        // Add different section for each concept in the content Table
+        content.add(new ListSection(game, skin, Color.BLUE));
         content.row();
-        content.add(new StackSection(game, skin, Color.BROWN)).expandX().fill();
+        content.add(new StackSection(game, skin, Color.BROWN));
         content.row();
-        content.add(new QueueSection(game, skin, Color.CYAN)).expandX().fill();
+        content.add(new QueueSection(game, skin, Color.CYAN));
         content.row();
 
         content.pack(); // calculates size based on content
@@ -61,15 +72,9 @@ public class HomeScreen extends WindowsConfiguration {
 
         // END OF SCROLL PANE SECTION
 
-        root.add(header)
-            .expandX()
-            .fill();
-
+        root.add(header);
         root.row();
-
-        root.add(scrollPane)
-            .expandX()
-            .fill();
+        root.add(scrollPane);
 
         stage.addActor(root);
     }

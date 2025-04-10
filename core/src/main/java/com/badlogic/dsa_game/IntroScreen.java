@@ -10,13 +10,24 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 
 abstract class IntroScreen extends WindowsConfiguration {
 
-    final protected Content content;
+    /*
+     * This is the base class for all Introduction type
+     * screens for List, Stack, Queue, etc.
+     * This class have already some common UI and
+     * common buttons with some functionalities
+     * of each buttons.
+     */
 
+    final protected ContentTable contentTable;
 
     public IntroScreen(Game game) {
         super(game, "SOME INTRO SCREEN");
 
-        content = new Content(skin);
+        /*
+         * Initialize a new ContentTable that will act
+         * as the content of the ScrollPane.
+         */
+        contentTable = new ContentTable(skin);
 
     }
 
@@ -29,7 +40,8 @@ abstract class IntroScreen extends WindowsConfiguration {
         root.setFillParent(true);
 
 
-        ScrollPane scrollPane = new ScrollPane(content, skin);
+        ScrollPane scrollPane = new ScrollPane(contentTable, skin);
+        // Disable the horizontal scroll bar
         scrollPane.setScrollingDisabled(true, false);
 
 
@@ -46,7 +58,9 @@ abstract class IntroScreen extends WindowsConfiguration {
         quitButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
+                // Dispose the current instance of this screen
                 dispose();
+                // Exit the game entirely
                 Gdx.app.exit();
             }
         });
@@ -56,7 +70,9 @@ abstract class IntroScreen extends WindowsConfiguration {
         homeButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
+                // Dispose the current instance of this screen
                 dispose();
+                // Set the current active screen to Home Screen
                 game.setScreen(new HomeScreen(game));
 
             }

@@ -4,18 +4,22 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 
-public class Content extends Table {
+public class ContentTable extends Table {
+
+    /*
+     * This is a custom Table that will be used
+     * as the Content Table of the ScrollPane
+     * in the IntroScreen class.
+     */
+
+    // TODO: Don't forget to add an Animation as one of field of this class!!
 
     final private Label title;
     final private Label mainText;
 
-    public Content(Skin skin) {
+    public ContentTable(Skin skin) {
 
-        this.setSkin(skin);
-
-        this.title = new Label("", skin);
-        this.title.setFontScale(3);
-        this.mainText = new Label("", skin);
+        // Configuration of this class
 
         this.setDebug(true);
 
@@ -24,6 +28,12 @@ public class Content extends Table {
             .fill()
             .padLeft(50);
 
+        // End of configuration
+
+        this.title = new Label("", skin);
+        this.title.setFontScale(3);
+
+        this.mainText = new Label("", skin);
 
         this.add(title);
         this.row();

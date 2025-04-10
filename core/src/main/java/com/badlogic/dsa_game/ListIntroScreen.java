@@ -9,8 +9,8 @@ public class ListIntroScreen extends IntroScreen {
         super(game);
 
 
-        content.setTitle("LIST");
-        content.setMainText("jknsdjknnjksdjkn\n" +
+        contentTable.setTitle("LIST");
+        contentTable.setMainText("jknsdjknnjksdjkn\n" +
             "sdhjbjhkjhsksjhknsfjk\n" +
             "sdfjknfsedhjkhjkshjkfsjknjksf\n" +
             "sdfejknejknjkfeshjbfehjb\n" +

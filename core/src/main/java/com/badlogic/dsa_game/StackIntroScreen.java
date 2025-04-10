@@ -7,8 +7,8 @@ public class StackIntroScreen extends IntroScreen {
     public StackIntroScreen(Game game) {
         super(game);
 
-        content.setTitle("STACK");
-        content.setMainText("jknsdjknnjksdjkn\n" +
+        contentTable.setTitle("STACK");
+        contentTable.setMainText("jknsdjknnjksdjkn\n" +
             "sdhjbjhkjhsksjhknsfjk\n" +
             "sdfjknfsedhjkhjkshjkfsjknjksf\n" +
             "sdfejknejknjkfeshjbfehjb\n" +

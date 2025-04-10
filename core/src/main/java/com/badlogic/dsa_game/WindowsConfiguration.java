@@ -12,8 +12,10 @@ abstract class WindowsConfiguration extends ScreenAdapter {
 
     /*
      * This is the base class for all the windows
-     * of this game. All the configurations will be
-     * shared by all the child classes of this base class.
+     * of this game. All the configurations and
+     * common behaviours like render, dispose, and
+     * resize will be shared by all the child
+     * classes of this base class.
      */
 
     final protected Stage stage;
@@ -48,10 +50,12 @@ abstract class WindowsConfiguration extends ScreenAdapter {
     @Override
     public void render(float delta) {
 
-        // Clear the screen and draw the stage
+        // Clear the screen
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
+        // Updates all Actors in the Stage
         stage.act(delta);
+        // Draw all Actors in the Stage
         stage.draw();
     }
 
