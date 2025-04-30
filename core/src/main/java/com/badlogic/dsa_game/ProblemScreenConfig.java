@@ -24,6 +24,8 @@ public class ProblemScreenConfig extends WindowsConfiguration {
 
         problemStatement = new Label("", skin);
         canvasTable = new Table();
+        canvasTable.setDebug(true);
+
 
         root.add(problemStatement)
             .top()
