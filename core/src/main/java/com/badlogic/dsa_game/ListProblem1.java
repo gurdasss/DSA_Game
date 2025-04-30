@@ -6,6 +6,9 @@ public class ListProblem1 extends ProblemScreenConfig {
 
     public ListProblem1(Game game) {
         super(game);
+
+        problemStatement.setText("Hello");
         
+
     }
 }
