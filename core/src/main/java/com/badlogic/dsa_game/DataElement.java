@@ -11,7 +11,14 @@ public class DataElement extends Container<Label> {
 
     public DataElement(String value, Skin skin) {
 
-        super(new Label(value, skin));
+        super();
+
+        Label dataLabel = new Label(value, skin);
+
+        dataLabel.setFontScale(4);
+
+        this.setActor(dataLabel);
+
         this.setTouchable(Touchable.enabled);
 
         dataValue = value;

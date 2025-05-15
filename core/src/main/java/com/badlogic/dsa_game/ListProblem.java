@@ -34,7 +34,7 @@ public class ListProblem extends ProblemScreenConfig {
                 public void dragStop(InputEvent event, float x, float y, int pointer, DragAndDrop.Payload payload, DragAndDrop.Target target) {
                     if (target == null) {
                         sourceContainer.add(payload.getDragActor());
-                        sourceContainer.pack();
+
                     }
                 }
             });
@@ -52,8 +52,6 @@ public class ListProblem extends ProblemScreenConfig {
             @Override
             public void drop(DragAndDrop.Source source, DragAndDrop.Payload payload, float x, float y, int pointer) {
                 targetContainer.add(payload.getDragActor());
-                System.out.println(payload.getObject());
-                targetContainer.pack();
             }
         });
     }
