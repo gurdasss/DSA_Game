@@ -7,7 +7,7 @@ public class Main extends Game {
     @Override
     public void create() {
         // set the initial Game screen to Main Menu Screen
-        this.setScreen(new ListProblem(this));
+        this.setScreen(new StackProblem(this));
     }
 
 }

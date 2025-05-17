@@ -29,5 +29,4 @@ public class DataElement extends Container<Label> {
         return dataValue;
     }
 
-
 }
