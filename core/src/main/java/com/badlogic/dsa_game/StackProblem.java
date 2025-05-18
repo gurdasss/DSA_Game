@@ -9,6 +9,9 @@ import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop;
 import java.util.Stack;
 
 public class StackProblem extends ProblemScreenConfig {
+
+    private Stack<DataElement> testStack;
+
     public StackProblem(Game game) {
         super(game);
 
@@ -16,9 +19,18 @@ public class StackProblem extends ProblemScreenConfig {
         DragAndDrop dragAndDrop = new DragAndDrop();
 
         Stack<Actor> dataElementStack = new Stack<>();
+        testStack = new Stack<>();
+
+        testStack.push(new DataElement("3", skin));
+        testStack.push(new DataElement("2", skin));
+        testStack.push(new DataElement("5", skin));
+        testStack.push(new DataElement("1", skin));
+        testStack.push(new DataElement("4", skin));
+
+        problemStatement.setText(testStack.toString());
 
 
-        for (int i = 0; i < 5; i++) {
+        for (int i = 1; i <= 5; i++) {
             DataElement item = new DataElement(Integer.toString(i), skin);
 
             dragAndDrop.addSource(new DragAndDrop.Source(item) {
@@ -59,6 +71,7 @@ public class StackProblem extends ProblemScreenConfig {
                         }
 
                         sourceContainer.add(payload.getDragActor());
+                        checkButton.setDisabled(true);
                     }
 
                 }
@@ -91,8 +104,24 @@ public class StackProblem extends ProblemScreenConfig {
                 targetContainer.add(currentTopDataElement);
                 dataElementStack.push(currentTopDataElement);
 
+                checkButton.setDisabled(!sourceContainer.getChildren().isEmpty());
+
             }
         });
     }
 
+    @Override
+    protected boolean checkSequence() {
+        boolean flag = false;
+
+        for (int i = 0; i < 5; i++) {
+
+            String targetVal = ((DataElement) targetContainer.getChild(i)).getDataValue();
+            String currentVal = testStack.get(i).getDataValue();
+
+            flag = targetVal.equals(currentVal);
+        }
+
+        return flag;
+    }
 }

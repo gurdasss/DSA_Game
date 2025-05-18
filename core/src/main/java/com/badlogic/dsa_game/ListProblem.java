@@ -3,15 +3,29 @@ package com.badlogic.dsa_game;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop;
+import com.badlogic.gdx.utils.Array;
 
 public class ListProblem extends ProblemScreenConfig {
+
+    final private Array<DataElement> dataElementArray;
 
     public ListProblem(Game game) {
         super(game);
 
         DragAndDrop dragAndDrop = new DragAndDrop();
 
-        for (int i = 0; i < 5; i++) {
+        dataElementArray = new Array<>();
+
+        dataElementArray.add(new DataElement("5", skin));
+        dataElementArray.add(new DataElement("3", skin));
+        dataElementArray.add(new DataElement("2", skin));
+        dataElementArray.add(new DataElement("1", skin));
+        dataElementArray.add(new DataElement("4", skin));
+
+        problemStatement.setText(dataElementArray.toString());
+
+
+        for (int i = 1; i <= 5; i++) {
             DataElement item = new DataElement(Integer.toString(i), skin);
 
             dragAndDrop.addSource(new DragAndDrop.Source(item) {
@@ -34,7 +48,7 @@ public class ListProblem extends ProblemScreenConfig {
                 public void dragStop(InputEvent event, float x, float y, int pointer, DragAndDrop.Payload payload, DragAndDrop.Target target) {
                     if (target == null) {
                         sourceContainer.add(payload.getDragActor());
-
+                        checkButton.setDisabled(true);
                     }
                 }
             });
@@ -51,8 +65,28 @@ public class ListProblem extends ProblemScreenConfig {
 
             @Override
             public void drop(DragAndDrop.Source source, DragAndDrop.Payload payload, float x, float y, int pointer) {
-                targetContainer.add(payload.getDragActor());
+
+                DataElement currentDataElement = ((DataElement) payload.getDragActor());
+
+                targetContainer.add(currentDataElement);
+
+                checkButton.setDisabled(!sourceContainer.getChildren().isEmpty());
             }
         });
+    }
+
+    @Override
+    protected boolean checkSequence() {
+        boolean flag = false;
+
+        for (int i = 0; i < 5; i++) {
+
+            String targetVal = ((DataElement) targetContainer.getChild(i)).getDataValue();
+            String currentVal = dataElementArray.get(i).getDataValue();
+
+            flag = targetVal.equals(currentVal);
+        }
+
+        return flag;
     }
 }

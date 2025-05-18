@@ -2,15 +2,19 @@ package com.badlogic.dsa_game;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 
 // TODO: Remember to change it back to abstract
-public class ProblemScreenConfig extends WindowsConfiguration {
+abstract public class ProblemScreenConfig extends WindowsConfiguration {
 
     final protected Label problemStatement;
     final protected Table targetContainer;
     final protected Table sourceContainer;
+    final protected TextButton checkButton;
 
     public ProblemScreenConfig(Game game) {
         super(game, "Some Problem Screen");
@@ -18,6 +22,20 @@ public class ProblemScreenConfig extends WindowsConfiguration {
         problemStatement = new Label("SOME COMPLICATED PROBLEM!!!!", skin);
         targetContainer = new Table();
         sourceContainer = new Table();
+
+        checkButton = new TextButton("Check", skin);
+        checkButton.setDisabled(true);
+
+        checkButton.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                if (checkSequence()) {
+                    System.out.println("Correct Answer!");
+                } else {
+                    System.out.println("Wrong Answer!");
+                }
+            }
+        });
 
         sourceContainer.defaults()
             .size(100)
@@ -31,6 +49,8 @@ public class ProblemScreenConfig extends WindowsConfiguration {
 
     }
 
+    abstract protected boolean checkSequence();
+
     @Override
     public void show() {
         Table root = new Table();
@@ -39,12 +59,12 @@ public class ProblemScreenConfig extends WindowsConfiguration {
 
         Table footer = new Table();
 
-        footer.add(new Label("FOOTER BUTTON GROUP", skin));
+        footer.add(checkButton)
+            .expand()
+            .fill();
 
         Table canvasTable = new Table();
         canvasTable.setDebug(true);
-
-        targetContainer.add(new Label("TARGET", skin));
 
 
         canvasTable.add(targetContainer)

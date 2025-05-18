@@ -9,12 +9,21 @@ import com.badlogic.gdx.utils.Queue;
 
 public class QueueProblem extends ProblemScreenConfig {
 
+    private Queue<DataElement> testQueue;
+
     public QueueProblem(Game game) {
         super(game);
 
         DragAndDrop dragAndDrop = new DragAndDrop();
 
         Queue<Actor> dataElementQueue = new Queue<>();
+
+        testQueue = new Queue<>();
+        testQueue.addLast(new DataElement("3", skin));
+        testQueue.addLast(new DataElement("1", skin));
+        testQueue.addLast(new DataElement("4", skin));
+        testQueue.addLast(new DataElement("5", skin));
+        testQueue.addLast(new DataElement("2", skin));
 
 
         for (int i = 0; i < 5; i++) {
@@ -54,6 +63,8 @@ public class QueueProblem extends ProblemScreenConfig {
                         }
 
                         sourceContainer.add(payload.getDragActor());
+                        checkButton.setDisabled(true);
+
                     }
 
                 }
@@ -89,10 +100,27 @@ public class QueueProblem extends ProblemScreenConfig {
 
                 targetContainer.add(currentDataElement);
                 dataElementQueue.addLast(currentDataElement);
+                checkButton.setDisabled(!sourceContainer.getChildren().isEmpty());
+
 
             }
         });
 
 
+    }
+
+    @Override
+    protected boolean checkSequence() {
+        boolean flag = false;
+
+        for (int i = 0; i < 5; i++) {
+
+            String targetVal = ((DataElement) targetContainer.getChild(i)).getDataValue();
+            String currentVal = testQueue.get(i).getDataValue();
+
+            flag = targetVal.equals(currentVal);
+        }
+
+        return flag;
     }
 }
